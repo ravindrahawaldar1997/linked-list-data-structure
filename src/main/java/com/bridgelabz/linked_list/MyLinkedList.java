@@ -23,6 +23,18 @@ public class MyLinkedList<T> {
         }
     }
 
+    public void append(INode myNode) {
+        if (this.tail == null) {
+            this.tail = myNode;
+        }
+        if (this.head == null) {
+            this.head = myNode;
+        } else {
+            this.tail.setNext(myNode);
+            this.tail = myNode;
+        }
+    }
+
     public void printMyNodes() {
         StringBuffer myNodes = new StringBuffer("My nodes ");
         INode tempNode = head;
@@ -35,16 +47,20 @@ public class MyLinkedList<T> {
         System.out.println(myNodes);
     }
 
+
     public static void main(String[] args) {
         MyLinkedList<Integer> linkedList = new MyLinkedList<>();
-        MyNode<Integer> firstNode = new MyNode<>(70);
+        MyNode<Integer> firstNode = new MyNode<>(56);
         MyNode<Integer> secondNode = new MyNode<>(30);
-        MyNode<Integer> thirdNode = new MyNode<>(56);
+        MyNode<Integer> thirdNode = new MyNode<>(70);
+        
 
-        linkedList.add(firstNode);
-        linkedList.add(secondNode);
-        linkedList.add(thirdNode);
+        MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
+        myLinkedList.append(firstNode);
+        myLinkedList.append(secondNode);
+        myLinkedList.append(thirdNode);
+        myLinkedList.printMyNodes();
 
-        linkedList.printMyNodes();
+
     }
 }
