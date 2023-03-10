@@ -52,6 +52,11 @@ public class MyLinkedList<T> {
         myNodes.append(tempNode.getKey());
         System.out.println(myNodes);
     }
+    public INode popFirstNode(){
+        INode tempNode = this.head;
+        this.head = head.getNext();
+        return tempNode;
+    }
 
     public static void main(String[] args) {
         MyLinkedList<Integer> linkedList = new MyLinkedList<>();
@@ -63,6 +68,8 @@ public class MyLinkedList<T> {
         myLinkedList.add(firstNode);
         myLinkedList.append(thirdNode);
         myLinkedList.insertNode(secondNode);
+        myLinkedList.popFirstNode();
         myLinkedList.printMyNodes();
+
     }
 }
