@@ -9,9 +9,9 @@ public class MyQueueList {
         MyNode<Integer> secondNode = new MyNode<>(30);
         MyNode<Integer> thirdNode = new MyNode<>(70);
 
-        myQueueList.push(firstNode);
-        myQueueList.push(secondNode);
-        myQueueList.push(thirdNode);
+        myQueueList.pushQueue(firstNode);
+        myQueueList.pushQueue(secondNode);
+        myQueueList.pushQueue(thirdNode);
 
         myQueueList.printStack();
     }

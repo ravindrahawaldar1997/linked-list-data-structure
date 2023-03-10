@@ -10,7 +10,9 @@ public class MyStack<K> {
     public void push(INode element) {
         myLinkedList.add(element);
     }
-
+    public void pushQueue(INode element) {
+        myLinkedList.add(element);
+    }
     public void printStack() {
         myLinkedList.printMyNodes();
     }
