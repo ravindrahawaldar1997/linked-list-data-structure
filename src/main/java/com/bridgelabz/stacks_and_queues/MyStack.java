@@ -4,7 +4,7 @@ package com.bridgelabz.stacks_and_queues;
 import com.bridgelabz.linked_list.INode;
 import com.bridgelabz.linked_list.MyLinkedList;
 
-public class MyStack {
+public class MyStack<K> {
     MyLinkedList<Integer> myLinkedList = new MyLinkedList<>();
 
     public void push(INode element) {
@@ -13,5 +13,11 @@ public class MyStack {
 
     public void printStack() {
         myLinkedList.printMyNodes();
+    }
+    public INode peak(){
+        return myLinkedList.head;
+    }
+    public void pop(){
+        myLinkedList.popFirstElement();
     }
 }
