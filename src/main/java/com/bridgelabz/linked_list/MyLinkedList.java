@@ -52,10 +52,21 @@ public class MyLinkedList<T> {
         myNodes.append(tempNode.getKey());
         System.out.println(myNodes);
     }
-    public INode popFirstNode(){
+
+    public INode popFirstElement() {
         INode tempNode = this.head;
         this.head = head.getNext();
         return tempNode;
+    }
+
+    public INode popLastElement() {
+        INode tempNode = head;
+        while (!tempNode.getNext().equals(tail)) {
+            tempNode = tempNode.getNext();
+        }
+        INode deletedNode = tempNode.getNext();
+        tempNode.setNext(null);
+        return deletedNode;
     }
 
     public static void main(String[] args) {
@@ -68,7 +79,9 @@ public class MyLinkedList<T> {
         myLinkedList.add(firstNode);
         myLinkedList.append(thirdNode);
         myLinkedList.insertNode(secondNode);
-        myLinkedList.popFirstNode();
+        myLinkedList.popFirstElement();
+        myLinkedList.popLastElement();
+        
         myLinkedList.printMyNodes();
 
     }
