@@ -69,13 +69,6 @@ public class MyLinkedList<T> {
         return deletedNode;
     }
 
-    public void insertAfter(INode previousNode, INode newNode) {
-        INode tempNode = previousNode.getNext();
-        previousNode.setNext(newNode);
-        newNode.setNext(tempNode);
-
-    }
-
     public void searchNode(INode searchNode) {
         INode tempNode = head;
         while (!tempNode.getNext().equals(null)) {
@@ -85,6 +78,17 @@ public class MyLinkedList<T> {
             }
             tempNode = tempNode.getNext();
         }
+    }
+    public void insertAfter(INode previousNode, INode newNode) {
+        INode tempNode = previousNode.getNext();
+        previousNode.setNext(newNode);
+        newNode.setNext(tempNode);
+    }
+    public INode deleteAfter(INode previousNode, INode deleteNode){
+        INode tempNode = deleteNode.getNext();
+        previousNode.setNext(tempNode);
+        tempNode.setNext(null);
+        return tempNode;
     }
 
     public static void main(String[] args) {
@@ -102,7 +106,7 @@ public class MyLinkedList<T> {
 
         MyNode<Integer> newNode = new MyNode<>(40);
         myLinkedList.insertAfter(secondNode, newNode);
-
+        myLinkedList.deleteAfter(secondNode, newNode);
 
         myLinkedList.printMyNodes();
 
