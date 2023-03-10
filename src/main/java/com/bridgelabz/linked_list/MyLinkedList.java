@@ -69,6 +69,17 @@ public class MyLinkedList<T> {
         return deletedNode;
     }
 
+    public void searchNode(INode searchNode) {
+        INode tempNode = head;
+        while (!tempNode.getNext().equals(null)) {
+            if (tempNode.getKey().equals(searchNode.getKey())) {
+                System.out.println("Searched value of  key is = " + tempNode.getKey());
+                break;
+            }
+            tempNode = tempNode.getNext();
+        }
+    }
+
     public static void main(String[] args) {
         MyLinkedList<Integer> linkedList = new MyLinkedList<>();
         MyNode<Integer> firstNode = new MyNode<>(56);
@@ -79,9 +90,10 @@ public class MyLinkedList<T> {
         myLinkedList.add(firstNode);
         myLinkedList.append(thirdNode);
         myLinkedList.insertNode(secondNode);
-        myLinkedList.popFirstElement();
-        myLinkedList.popLastElement();
-        
+
+        myLinkedList.searchNode(secondNode);
+
+
         myLinkedList.printMyNodes();
 
     }
