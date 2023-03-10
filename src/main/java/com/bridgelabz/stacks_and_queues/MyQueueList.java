@@ -13,6 +13,8 @@ public class MyQueueList {
         myQueueList.pushQueue(secondNode);
         myQueueList.pushQueue(thirdNode);
 
+        myQueueList.dequeue();
+
         myQueueList.printStack();
     }
 }

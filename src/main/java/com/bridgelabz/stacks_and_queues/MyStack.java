@@ -22,4 +22,7 @@ public class MyStack<K> {
     public void pop(){
         myLinkedList.popFirstElement();
     }
+    public INode dequeue(){
+        return myLinkedList.popFirstElement();
+    }
 }
