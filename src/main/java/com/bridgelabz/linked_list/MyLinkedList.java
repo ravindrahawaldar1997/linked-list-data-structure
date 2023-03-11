@@ -41,17 +41,6 @@ public class MyLinkedList<T> {
         newNode.setNext(tail);
     }
 
-    public void printMyNodes() {
-        StringBuffer myNodes = new StringBuffer("My nodes ");
-        INode tempNode = head;
-        while (tempNode.getNext() != null) {
-            myNodes.append(tempNode.getKey());
-            if (!tempNode.equals(tail)) myNodes.append("->");
-            tempNode = tempNode.getNext();
-        }
-        myNodes.append(tempNode.getKey());
-        System.out.println(myNodes);
-    }
 
     public INode popFirstElement() {
         INode tempNode = this.head;
@@ -79,20 +68,60 @@ public class MyLinkedList<T> {
             tempNode = tempNode.getNext();
         }
     }
+
     public void insertAfter(INode previousNode, INode newNode) {
         INode tempNode = previousNode.getNext();
         previousNode.setNext(newNode);
         newNode.setNext(tempNode);
     }
-    public INode deleteAfter(INode previousNode, INode deleteNode){
+
+    public INode deleteAfter(INode previousNode, INode deleteNode) {
         INode tempNode = deleteNode.getNext();
         previousNode.setNext(tempNode);
         tempNode.setNext(null);
         return tempNode;
     }
 
+    public void appendSort(INode previousNode, INode newNode) {
+        if ((int) previousNode.getKey() < (int) newNode.getKey()) {
+            this.tail.setNext(newNode);
+            this.tail = newNode;
+        } else {
+            INode tempNode = this.head;
+            this.head = newNode;
+            this.head.setNext(tempNode);
+        }
+    }
+
+    public void printMyNodes() {
+        StringBuffer myNodes = new StringBuffer("My nodes ");
+        INode tempNode = head;
+        while (tempNode.getNext() != null) {
+            myNodes.append(tempNode.getKey());
+            if (!tempNode.equals(tail)) myNodes.append("->");
+            tempNode = tempNode.getNext();
+        }
+        myNodes.append(tempNode.getKey());
+        System.out.println(myNodes);
+    }
+
+    public void sort() {
+        INode tempNode = head;
+        while (tempNode != null) {
+            INode nextNode = tempNode.getNext();
+            while (nextNode != null) {
+                if ((Integer) tempNode.getKey() > (Integer) nextNode.getKey()) {
+                    Integer temp = (Integer) tempNode.getKey();
+                    tempNode.setKey(nextNode.getKey());
+                    nextNode.setKey(temp);
+                }
+                nextNode = nextNode.getNext();
+            }
+            tempNode = tempNode.getNext();
+        }
+    }
+
     public static void main(String[] args) {
-        MyLinkedList<Integer> linkedList = new MyLinkedList<>();
         MyNode<Integer> firstNode = new MyNode<>(56);
         MyNode<Integer> secondNode = new MyNode<>(30);
         MyNode<Integer> thirdNode = new MyNode<>(70);
@@ -107,6 +136,8 @@ public class MyLinkedList<T> {
         MyNode<Integer> newNode = new MyNode<>(40);
         myLinkedList.insertAfter(secondNode, newNode);
         myLinkedList.deleteAfter(secondNode, newNode);
+
+        myLinkedList.sort();
 
         myLinkedList.printMyNodes();
 
