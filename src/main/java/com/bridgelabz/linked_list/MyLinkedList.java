@@ -82,16 +82,6 @@ public class MyLinkedList<T> {
         return tempNode;
     }
 
-    public void appendSort(INode previousNode, INode newNode) {
-        if ((int) previousNode.getKey() < (int) newNode.getKey()) {
-            this.tail.setNext(newNode);
-            this.tail = newNode;
-        } else {
-            INode tempNode = this.head;
-            this.head = newNode;
-            this.head.setNext(tempNode);
-        }
-    }
 
     public void printMyNodes() {
         StringBuffer myNodes = new StringBuffer("My nodes ");
